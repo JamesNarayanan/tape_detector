@@ -1,0 +1,16 @@
+To create xmls:
+	python3 xml_to_csv.py
+
+To generate tfrecords:
+	mkdir tf_record
+	python3 generate_tfrecord.py --csv_input=annotations/train_labels.csv --image_dir=images/train --output_path=tf_record/train.record
+	python3 generate_tfrecord.py --csv_input=annotations/val_labels.csv --image_dir=images/val --output_path=tf_record/val.record
+
+To train (from base folder):
+	python3 ~/projects/tensorflow/tf_models/research/object_detection/model_main.py --logtostderr --model_dir=train/ --pipeline_config_path=ssd_mobilenet_v2_coco.config
+
+To log training (from base folder):
+	tensorboard --logdir=./
+
+To export inference graph:
+	python3 ~/projects/tensorflow/tf_models/research/object_detection/export_inference_graph.py --input_type image_tensor --pipeline_config_path ssd_mobilenet_v2_coco.config --trained_checkpoint_prefix train/model.ckpt-XXXX --output_directory fine_tuned_model
