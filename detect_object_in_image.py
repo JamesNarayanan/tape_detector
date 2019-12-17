@@ -26,7 +26,7 @@ from object_detection.utils import visualization_utils as vis_util
 
 ### Model Preperation ###
 # What model to download.
-MODEL_NAME = 'fine_tuned_model'
+MODEL_NAME = 'fine_tuned_model_v2'
 PATH_TO_FROZEN_GRAPH = MODEL_NAME + '/frozen_inference_graph.pb'
 PATH_TO_LABELS = 'annotations/label_map.pbtxt'
 
